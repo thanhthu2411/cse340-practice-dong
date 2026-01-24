@@ -1,0 +1,31 @@
+<%- include('../partials/header')%>
+<main>
+    <h1>Faculty List</h1>
+    <p class="description">View our faculty directory</p>
+
+    <div class="sort-options">
+        <!-- <span><strong>Sort by:</strong> </span> -->
+        <a href="/faculty?sort=department" class="<%= currentSort === 'department' ? 'active' : '' %>">Department</a>
+        <a href="/faculty?sort=name" class="<%= currentSort === 'name' ? 'active' : '' %>">Name</a>
+        <a href="/faculty?sort=title" class="<%= currentSort === 'title' ? 'active' : '' %>">Title</a>       
+    </div>
+
+
+    <div class="faculty-list">
+        <% facultyList.forEach((fa) => { %>
+
+            <div class="faculty-card">
+                <h3><a href="/faculty/<%=fa.id%>"><%= fa.name %></a></h3>
+                <p class="faculty-title"><strong>Title:</strong> <%= fa.title %></p>
+                <p class="faculty-department"><strong>Department:</strong> <%= fa.department %></p>
+                <p class="faculty-office"><strong>Office:</strong> <%= fa.office %></p>
+                <!-- <p class="faculty-phone"><strong>Phone:</strong> <%= fa.phone %></p> -->
+                <!-- <p class="faculty-email"><strong>Email:</strong> <%= fa.email %></p> -->
+            </div>
+        <% }) %>
+    </div>
+    
+    <p class="home-navigation"><a href="/">&larr; Back to Home</a></p>
+
+</main>
+<%- include('../partials/footer')%>
