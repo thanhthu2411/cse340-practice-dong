@@ -10,29 +10,34 @@ main {
   margin: 0 auto;
   margin-top: 3rem;
   display: flex;
-  justify-content: center;
+  justify-content: right;
   align-items: center;
+  gap: 1rem;
 
-  a {
-    width: 30%;
-    color: #2c5aa0;
-    text-decoration: none;
-    padding: 0.25rem 0.5rem;
-    border: 1px solid rgb(192, 189, 189);
-    border-radius: 4px;
-    text-align: center;
-    padding: 1.3rem 0;
-    font-size: 1.1rem;
-    transition: transform 0.3s ease;
+  .sort-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 1rem;
 
-    &:hover {
-      background: #f0f4f8;
-    }
+    a {
+      color: #2c5aa0;
+      text-decoration: none;
+      border-radius: 4px;
+      text-align: center;
+      font-size: 1.1rem;
+      transition: transform 0.3s ease;
+      padding: 0.3rem 0.8rem;
 
-    &.active {
-      transform: scale(1.05);
-      background: #2c5aa0;
-      color: white;
+      &:hover {
+        background: white;
+      }
+
+      &.active {
+        transform: scale(1.05);
+        background: #2c5aa0;
+        color: white;
+      }
     }
   }
 }
