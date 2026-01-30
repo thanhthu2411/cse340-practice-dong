@@ -62,7 +62,8 @@ app.use((err, req, res, next) => {
     const context = {
         title: status === 404 ? 'Page Not Found' : 'Server Error',
         error: NODE_ENV === 'production' ? 'An error occurred' : err.message,
-        stack: NODE_ENV === 'production' ? null : err.stack
+        stack: NODE_ENV === 'production' ? null : err.stack,
+        NODE_ENV
     };
 
     // Render the appropriate error template with fallback
