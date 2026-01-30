@@ -17,7 +17,7 @@ const testErrorPage = (req, res, next) => {
     next(err);
 };
 
-const helpPage = (req, res, next) => {
+const helpPage = (req, res) => {
     res.render('help', {
         title: 'Help Page'
     });
