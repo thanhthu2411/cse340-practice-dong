@@ -7,8 +7,8 @@
         <!-- courses is an object and not iterable, so we need object.values() to return an array of all values -->
         <% Object.values(courses).forEach(course => {%>
             <div class="course-card">
-                <h3><a href="/catalog/<%= course.id %>"><%= course.title %></a></h3>
-                <p class="course-id"><%= course.id%> • <%= course.credits %> credits</p>
+                <h3><a href="/catalog/<%= course.slug %>"><%= course.name %></a></h3>
+                <p class="course-id"><%= course.id%> • <%= course.creditHour %> credits</p>
                 <p class="course-description"><%= course.description %></p>
             </div>
         <% }); %>

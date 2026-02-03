@@ -10,13 +10,13 @@ router.get('/', homePage);
 router.get('/about', aboutPage);
 
 router.get('/catalog', catalogPage);
-router.get('/catalog/:courseId', courseDetailPage);
+router.get('/catalog/:slugId', courseDetailPage);
 
 router.get('/demo', addDemoHeaders, demoPage);
 router.get('/test-error', testErrorPage);
 router.get('/help', helpPage);
 
 router.get('/faculty', facultyListPage);
-router.get('/faculty/:facultyId', facultyDetailPage);
+router.get('/faculty/:facultySlug', facultyDetailPage);
 
 export default router;

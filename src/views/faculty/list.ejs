@@ -14,15 +14,13 @@
 
 
     <div class="faculty-list">
-        <% facultyList.forEach((fa) => { %>
+        <% faculty.forEach((fa) => { %>
 
             <div class="faculty-card">
-                <h3><a href="/faculty/<%=fa.id%>"><%= fa.name %></a></h3>
+                <h3><a href="/faculty/<%=fa.slug %>"><%= fa.name %></a></h3>
                 <p class="faculty-title"><strong>Title:</strong> <%= fa.title %></p>
                 <p class="faculty-department"><strong>Department:</strong> <%= fa.department %></p>
                 <p class="faculty-office"><strong>Office:</strong> <%= fa.office %></p>
-                <!-- <p class="faculty-phone"><strong>Phone:</strong> <%= fa.phone %></p> -->
-                <!-- <p class="faculty-email"><strong>Email:</strong> <%= fa.email %></p> -->
             </div>
         <% }) %>
     </div>
