@@ -6,6 +6,18 @@ import { facultyListPage, facultyDetailPage } from './faculty/faculty.js';
 // Create a new router instance
 const router = Router();
 
+// Router middleware should be added here, before route definitions
+router.use('/catalog', (req, res, next) => {
+    res.addStyle('<link rel="stylesheet" href="/css/catalog.css">');
+    next();
+});
+
+router.use('/faculty', (req, res, next) => {
+    res.addStyle('<link rel="stylesheet" href="/css/faculty.css">');
+    next();
+});
+
+
 router.get('/', homePage);
 router.get('/about', aboutPage);
 
