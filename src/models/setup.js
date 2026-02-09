@@ -39,6 +39,14 @@ const setupDatabase = async () => {
     const seedPath = join(__dirname, 'sql', 'seed.sql');
     const seedSQL = fs.readFileSync(seedPath, 'utf8'); //read the sql file and store it content as a string
     await db.query(seedSQL);
+
+    const practicePath = join(__dirname, 'sql', 'practice.sql');
+    if(fs.existsSync(practicePath)) {
+        const practiceSQL = fs.readFileSync(practicePath, 'utf-8');
+        await db.query(practiceSQL);
+        console.log('Practice database tables initialized');
+    }
+
     console.log('Database seeded successfully');
     
     return true;
