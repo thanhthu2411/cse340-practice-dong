@@ -10,6 +10,7 @@ import { setupDatabase, testConnection } from './src/models/setup.js';
 import session from 'express-session';
 import connectPgSimple from 'connect-pg-simple';
 import { caCert } from './src/models/db.js';
+import { startSessionCleanup } from './src/utils/session-cleanup.js';
 /**
  * Server configuration
  */
@@ -23,7 +24,7 @@ const PORT = process.env.PORT || 3000;
  */
 const app = express();
 
-// Initialize PostgreSQL session store
+// Initialize PostgreSQL session store + allow session data to be stored in Postgre
 const pgSession = connectPgSimple(session);
 
 // Configure session middleware
@@ -50,6 +51,8 @@ app.use(session({
         maxAge: 24 * 60 * 60 * 1000
     }
 }));
+// Start automatic session cleanup
+startSessionCleanup();
 /**
  * Configure Express
  */
