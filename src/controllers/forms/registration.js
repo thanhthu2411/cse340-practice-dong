@@ -1,11 +1,14 @@
 import { Router } from "express";
 import { body, validationResult } from "express-validator";
 import bcrypt from "bcrypt";
-import {
-  emailExists,
-  saveUser,
-  getAllUsers,
-} from "../../models/forms/registration.js";
+import { 
+    emailExists, 
+    saveUser,
+    getAllUsers,
+    getUserById,
+    updateUser,
+    deleteUser
+} from '../../models/forms/registration.js';
 
 const router = Router();
 
@@ -44,6 +47,25 @@ const registrationValidation = [
   body("passwordConfirm")
     .custom((value, { req }) => value === req.body.password)
     .withMessage("Passwords must match"),
+];
+
+/**
+ * Validation rules for editing user accounts
+ */
+const editValidation = [
+    body('name')
+        .trim()
+        .isLength({ min: 2, max: 100 })
+        .withMessage('Name must be between 2 and 100 characters')
+        .matches(/^[a-zA-Z\s'-]+$/)
+        .withMessage('Name can only contain letters, spaces, hyphens, and apostrophes'),
+    body('email')
+        .trim()
+        .isEmail()
+        .normalizeEmail()
+        .withMessage('Must be a valid email address')
+        .isLength({ max: 255 })
+        .withMessage('Email address is too long')
 ];
 
 /**
