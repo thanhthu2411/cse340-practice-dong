@@ -42,6 +42,20 @@ VALUES
     ('admin', 'Administrator with full system access')
 ON CONFLICT (role_name) DO NOTHING;
 
+-- Set the default value of role_id to the 'user' role so new inserts without role_id are handled automatically
+DO $$
+DECLARE
+    user_role_id INTEGER;
+BEGIN
+    SELECT id INTO user_role_id FROM roles WHERE role_name = 'user';
+    IF user_role_id IS NOT NULL THEN
+        EXECUTE format(
+            'ALTER TABLE users ALTER COLUMN role_id SET DEFAULT %s',
+            user_role_id
+        );
+    END IF;
+END $$;
+
 -- Update existing users without a role to default 'user' role
 DO $$
 DECLARE
