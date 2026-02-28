@@ -46,7 +46,7 @@ const processLogin = async (req, res) => {
     delete user.password;
 
     req.session.user = user;
-    req.flash('success', 'Log in successfully.');
+    req.flash('success', `Welcome back, ${user.name}!`);
     res.redirect("/dashboard");
   } catch (error) {
     // Model functions do not catch errors, so handle them here
