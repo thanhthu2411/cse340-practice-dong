@@ -56,7 +56,7 @@ const processRegistration = async (req, res) => {
     // Save user to database with hashed password
     await saveUser(name, email, hashedPassword);
     req.flash("success", "Register sucessfully!");
-    res.redirect("/register");
+    res.redirect("/login");
   } catch (error) {
     console.error("Error saving user:", error);
     req.flash("error", "Error saving user");
