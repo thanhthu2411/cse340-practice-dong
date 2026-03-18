@@ -25,7 +25,7 @@ const PORT = process.env.PORT || 3000;
  * Setup Express Server
  */
 const app = express();
-
+app.set('trust proxy', 1);
 // Initialize PostgreSQL session store + allow session data to be stored in Postgre
 const pgSession = connectPgSimple(session);
 
